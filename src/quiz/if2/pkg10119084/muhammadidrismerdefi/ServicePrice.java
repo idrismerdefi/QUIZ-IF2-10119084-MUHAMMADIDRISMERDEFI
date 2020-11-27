@@ -29,39 +29,68 @@ public class ServicePrice implements ServiceItem{
 
     @Override
     public float getPrice(int serviceItem) {
-       switch (serviceItem) {
-            case 1:
-                harga = 45;
-                break;
-            case 2:
-                harga = 55;
-                break;
-            case 3:
-                harga = 15;
-                break;
-            default:
-                break;
-        }
+        private float discount;
+    private float priceService;
+    
+    public void setPriceService(float priceService) {
+        this.priceService = priceService;
+    }
+    public float getPriceService() {
         return priceService;
-        
     }
 
     @Override
-    public boolean checkMemberStatus(String statusMember) {
-        return true;
-        
+    public void displayService() {
+        System.out.println("#*************************#");
+        System.out.println("#***Rock n Roll Haircut***#");
+        System.out.println("#*******Service List******#");
+        System.out.println("1. Haircut : IDR 45K");
+        System.out.println("2. Haircut + Hairwash: IDR 55K");
+        System.out.println("3. Hairwash Only : IDR 15K");
+        System.out.println("#*************************#");
+        System.out.print("Choose (1/2/3): ");
+    }
+    
+    @Override
+    public float getPrice(int serviceItem) {
+        float price;
+        switch (serviceItem) {
+            case 1:
+            price = 45000;
+            break;
+            case 2:
+            price = 55000;
+            break;
+            case 3:
+            price = 15000;
+            break;
+            default:
+            price = 0;
+            break;
+        };
+    return price;
     }
 
+    
+    public boolean checkMemberStatus(String statusMember) {
+        statusMember = statusMember.toLowerCase();
+        return statusMember.equals("yes") ? true : false;
+    }
+
+    
+    
     @Override
     public float getSale(boolean isMember, float parServicePrice) {
-        return 0;
-        
+        if (isMember == true) {
+            discount = (10 * parServicePrice) / 100;
+        } else {
+            discount = 0;
+        }
+    return discount;
     }
     
-    public float getTotalPay(float priceService,float discount){
-        return 0;
-        
+    
+    public float getTotalPay(float priceService, float discount) {
+        return priceService - discount;
     }
-    
-    
 }

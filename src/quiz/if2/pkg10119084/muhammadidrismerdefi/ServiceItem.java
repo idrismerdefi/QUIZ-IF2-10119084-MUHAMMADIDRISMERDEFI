@@ -10,9 +10,10 @@ package quiz.if2.pkg10119084.muhammadidrismerdefi;
  * @author MERDEFI
  */
 public interface ServiceItem {
-    void displayService();
-    float getPrice(int serviceItem);
-    boolean checkMemberStatus(String statusMember);
-    float getSale(boolean isMember,float parServicePrice);
+   public void displayService();
+        public boolean checkMemberStatus(String statusMember);
+        public float getSale(boolean isMember, float parServicePrice);
+        public float getPrice(int serviceItem);
+        
 }
 
